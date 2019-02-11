@@ -1,0 +1,5 @@
+<ifmodule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine on
+    RewriteRule ^(views)/([a-z.]+)$ /$2 [QSA,L]
+</ifmodule>

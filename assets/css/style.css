@@ -1,0 +1,169 @@
+/*CSS général*/
+
+.generalDisplay{
+    height: calc(100vh - 90px);
+    background-color: white;
+}
+@font-face{
+    font-family: 'Greyscale';
+    src: url(Greyscale.ttf);
+}
+body{
+    font-family: 'Greyscale';
+    font-weight: bold;
+    font-size: 110%;
+    background-image: linear-gradient(to bottom right, rgb(243, 191, 68), rgb(245, 237, 37));
+}
+#logoNavabarJCP{
+    width: 15%;
+    margin-right: 2%;
+    margin-top: -2%;
+}
+
+/*CSS de la page d'accueil*/
+
+.homeDisplay{
+    margin-top: 10%;
+}
+
+.buttonProducts{
+    width: 30%;
+    background-image: linear-gradient(to bottom right, rgb(243, 191, 68), rgb(245, 237, 37));
+    margin-top: 7%;
+    color: black;
+    font-size: 25px;
+}
+
+/*CSS des formulaires*/
+
+.title{
+    text-align: center;
+    padding-top: 5%;
+}
+.registerDiv{
+    text-align: right;
+    margin-top: 1%;
+}
+.connexionDiv{
+    text-align: right;
+    margin-top: 2%;
+}
+.connexionForm{
+    margin-top: 15%;
+}
+.registerForm{
+    margin-top: 5%;
+}
+.buttonSubmit{
+    width: 50%;
+    background-image: linear-gradient(to bottom right, rgb(243, 191, 68), rgb(245, 237, 37));
+    margin-top: 8%;
+    color: black;
+    font-size: 25px;
+}
+.dumbConnexion{
+    margin-top: 3%;
+}
+.dumbRegister{
+    margin-top: 10%;
+    margin-left: -10%;
+}
+.buttonSubmit2{
+    width: 60%;
+    background-image: linear-gradient(to bottom right, rgb(243, 191, 68), rgb(245, 237, 37));
+    margin-top: 50%;
+    color: black;
+    font-size: 25px;
+}
+.modificationButtons{
+    width: 30%;
+    margin-top: 7%;
+    margin-left: 35%;
+    background-image: linear-gradient(to bottom right, rgb(243, 191, 68), rgb(245, 237, 37));
+    color: black;
+    font-size: 25px;
+}
+.btn-primary:hover{
+    color: white;
+    background-image: linear-gradient(to bottom right, rgb(245, 237, 37), rgb(243, 191, 68));
+}
+.modifyForm, #cancelModifForm, #submitModifForm{
+    display: none;
+}
+.cancelButton{
+    font-size: 8px;
+    width: 25%;
+    margin-top: 2%;
+    margin-left: 37.5%;
+    background-image: linear-gradient(to bottom right, rgb(158, 162, 168), rgb(217, 220, 224));
+    color: black;
+    font-size: 25px;
+}
+.btn-warning:hover{
+    color: white;
+    background-image: linear-gradient(to bottom right, rgb(217, 220, 224), rgb(158, 162, 168));
+}
+/* CSS des toasts */
+
+.toastRegister{
+    opacity: 1;
+    position: relative;
+    margin-top: -60%;
+}
+.toastModify{
+    opacity: 1;
+    position: relative;
+    margin-top: -50%;
+}
+.fail{
+    color: red;
+}
+.success{
+    color: green;
+}
+.logoToast{
+    width: 7%;
+}
+
+/* CSS page profil */
+
+.infoDisplay{
+    text-align: right;
+    margin-top: 1%;
+}
+
+.resultInfoDisplay{
+    margin-top: 1%;
+}
+
+/* Media queries */
+
+@media all and (max-height: 736px){
+    .generalDisplay{
+        overflow-y: scroll;
+    }
+}
+@media all and (max-width: 995px){
+    .registerDiv{
+        text-align: left;
+    }
+    .buttonSubmit{
+        margin-bottom: 2%;
+    }
+    .connexionDiv{
+        text-align: left;
+    }
+    .buttonSubmit2{
+        margin-top: 15%;
+        margin-bottom: 2%;
+    }
+    .buttonProducts{
+        width: 50%;
+    }
+    .dumbRegister{
+        margin-left: 0%;
+    }
+    .infoDisplay{
+        text-align: left;
+    }
+}
