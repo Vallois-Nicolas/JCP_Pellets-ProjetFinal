@@ -135,6 +135,49 @@ body{
 .resultInfoDisplay{
     margin-top: 1%;
 }
+#deleteAccount{
+    margin-left: 42.5%;
+    margin-top: 3%;
+}
+#agreementDeleteAccount{
+    display: none;
+    margin-left: 45%;
+}
+#disagreeDeleteAccount{
+    display: none;
+}
+#agreementSentence{
+    display: none;
+    color: red;
+    text-align: center;
+}
+
+/* CSS du tableau utilisateurs admin */
+
+.usersList{
+    overflow-y: scroll;
+    padding-top: 2%;
+    align-content: center;
+}
+table{
+    margin-bottom: 2%;
+}
+td, th, tr{
+    text-align: center;
+    border: 1px black solid;
+}
+td{
+    padding: 15px;
+}
+th{
+    background-color: rgb(255, 250, 63);
+}
+tr:nth-child(even){
+    background-color: rgb(255, 254, 214);
+}
+tr:nth-child(odd){
+    background-color: rgb(255, 253, 163);
+}
 
 /* Media queries */
 

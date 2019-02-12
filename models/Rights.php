@@ -28,4 +28,13 @@ class Rights extends Database{
             return true;
         }
     }
+    
+    public function deleteRights(){
+        $query = 'DELETE FROM `jcp_user_types` WHERE `id_jcp_users` = :id';
+        $deleteRights = $this->db->prepare($query);
+        $deleteRights->bindValue(':id', $this->id_jcp_users, PDO::PARAM_INT);
+        if($deleteRights->execute()){
+            return true;
+        }
+    }
 }

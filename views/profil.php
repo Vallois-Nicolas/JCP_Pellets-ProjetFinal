@@ -99,7 +99,7 @@ require '../controllers/profilCtrl.php';
                         <p>Votre nom d'utilisateur :</p>
                     </div>
                     <div class="col-lg-5 resultInfoDisplay">
-                        <p class="infoUser"><?= $_SESSION['username']; ?></p>
+                        <p class="infoUser"><?= $user->username; ?></p>
                         <input type="text" name="changeUsername" value="<?= $_SESSION['username']; ?>" class="modifyForm" data-toggle="popover" data-trigger="focus" title="Votre nom d'utilisateur" data-content="Doit contenir entre 2 et 10 caractères." required>
                     </div>
                 </div>
@@ -107,6 +107,12 @@ require '../controllers/profilCtrl.php';
             </form>
             <button id="showModifForm" class="btn btn-primary modificationButtons">Modifier vos informations</button>
             <button id="cancelModifForm" class="btn btn-warning cancelButton">Annuler la modification</button>
+            <div>
+                <button id="deleteAccount" class="btn btn-danger">Supprimer votre compte</button>
+                <p id="agreementSentence">Souhaitez-vous réellement supprimer votre compte ? L'action est irréversible, vous perdrez toutes vos données.</p>
+                <a id="agreementDeleteAccount" class="btn btn-danger" href="../index.php?deleteAccount">Oui</a>
+                <button id="disagreeDeleteAccount" class="btn btn-danger">Non, retour</button>       
+            </div>
             <?php
             if(COUNT($errors) > 0){
                 foreach ($errors as $error){

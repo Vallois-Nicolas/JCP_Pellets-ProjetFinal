@@ -21,6 +21,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
             }else{
                 $_SESSION['id'] = $user->id;
                 $_SESSION['username'] = $username;
+                $_SESSION['rights'] = $connectUser[0]->rights;
                 header('Location: ../index.php');
             }
         }

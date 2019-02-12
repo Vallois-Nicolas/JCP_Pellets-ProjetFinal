@@ -68,7 +68,7 @@ class Users extends Database{
             $connectResult = $connect->fetchAll(PDO::FETCH_OBJ);
             $this->password = $connectResult[0]->password;
             $this->id = $connectResult[0]->id;
-            return true;
+            return $connectResult;
         }
     }
     
@@ -83,6 +83,7 @@ class Users extends Database{
             $this->birthdate = $infoList[0]->birthdate;
             $this->mail = $infoList[0]->mail;
             $this->phone = $infoList[0]->phone;
+            $this->username = $infoList[0]->username;
             return true;
         }
     }
@@ -99,6 +100,24 @@ class Users extends Database{
         $update->bindValue(':id', $this->id, PDO::PARAM_INT);
         if($update->execute()){
             return true;
+        }
+    }
+    
+    public function deleteUser(){
+        $query = 'DELETE FROM `jcp_users` WHERE `id` = :id';
+        $delete = $this->db->prepare($query);
+        $delete->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if($delete->execute()){
+            return true;
+        }
+    }
+    
+    public function listUser(){
+        $query = 'SELECT `jcp_users`.`id`, `jcp_users`.`lastname`, `jcp_users`.`firstname`, `jcp_users`.`birthdate`, `jcp_users`.`phone`, `jcp_users`.`mail`, `jcp_users`.`username`, `jcp_user_types`.`rights` FROM `jcp_users` INNER JOIN `jcp_user_types` ON `jcp_users`.`id` = `jcp_user_types`.`id_jcp_users`';
+        $list = $this->db->query($query);
+        if($list->execute()){
+            $listUsers = $list->fetchAll(PDO::FETCH_OBJ);
+            return $listUsers;
         }
     }
 }
