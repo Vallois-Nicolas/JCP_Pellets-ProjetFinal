@@ -66,10 +66,14 @@ class Users extends Database{
         $connect->bindValue(':username', $this->username, PDO::PARAM_STR);
         if($connect->execute()){
             $connectResult = $connect->fetchAll(PDO::FETCH_OBJ);
-            $this->password = $connectResult[0]->password;
-            $this->id = $connectResult[0]->id;
-            sleep(1);
-            return $connectResult;
+            if(COUNT($connectResult) > 0){
+                $this->password = $connectResult[0]->password;
+                $this->id = $connectResult[0]->id;
+                sleep(1);
+                return $connectResult;
+            }else{
+                return $connectResult;
+            }
         }
     }
     

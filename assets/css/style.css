@@ -133,6 +133,11 @@ body{
     position: relative;
     margin-top: -45%;
 }
+.toastConnexion{
+    opacity: 1;
+    position: relative;
+    margin-top: -57%;
+}
 .fail{
     color: red;
 }

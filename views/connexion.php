@@ -54,7 +54,7 @@ require '../controllers/connexionCtrl.php';
                         <label for="username">Votre nom d'utilisateur : </label>
                     </div>
                     <div class="offset-lg-1 col-lg-4">
-                        <input id="username" type="text" name="username" data-toggle="popover" data-trigger="focus" title="Votre nom d'utilisateur" data-content="Doit correspondre à celui que vous avez renseigné lors de votre inscription." required>
+                        <input id="username" type="text" name="username" value="<?php if(isset($errors)){echo $_POST['username'];} ?>" data-toggle="popover" data-trigger="focus" title="Votre nom d'utilisateur" data-content="Doit correspondre à celui que vous avez renseigné lors de votre inscription." required>
                     </div>
                 </div>
                 <div class="row connexionDiv">
@@ -76,6 +76,23 @@ require '../controllers/connexionCtrl.php';
                     </div>
                 </div>
             </form>
+            <?php
+            if(COUNT($errors) > 0){
+                foreach ($errors as $error){
+                    ?>
+            <div class="toast toastConnexion" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+                <div class="toast-header fail">
+                    <img src="../assets/img/logoJCP.png" class="logoToast rounded mr-2" alt="logo JCP">
+                    <strong class="mr-auto">Erreur</strong>
+                </div>
+                <div class="toast-body fail">
+                    <?= $error; ?>
+                </div>
+            </div>
+                    <?php
+                }
+            }
+            ?>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
