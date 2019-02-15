@@ -68,6 +68,7 @@ class Users extends Database{
             $connectResult = $connect->fetchAll(PDO::FETCH_OBJ);
             $this->password = $connectResult[0]->password;
             $this->id = $connectResult[0]->id;
+            sleep(1);
             return $connectResult;
         }
     }
@@ -88,6 +89,22 @@ class Users extends Database{
         }
     }
     
+    public function infoUserAdminSide(){
+        $query = 'SELECT `jcp_users`.`id`, `jcp_users`.`lastname`, `jcp_users`.`firstname`, `jcp_users`.`birthdate`, `jcp_users`.`phone`, `jcp_users`.`mail`, `jcp_users`.`username`, `jcp_user_types`.`rights` FROM `jcp_users` INNER JOIN `jcp_user_types` ON `jcp_users`.`id` = `jcp_user_types`.`id_jcp_users` WHERE `jcp_users`.`id` = :id';
+        $infoAdmin = $this->db->prepare($query);
+        $infoAdmin->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if($infoAdmin->execute()){
+            $infoListAdmin = $infoAdmin->fetchAll(PDO::FETCH_OBJ);
+            $this->username = $infoListAdmin[0]->username;
+            $this->lastname = $infoListAdmin[0]->lastname;
+            $this->firstname = $infoListAdmin[0]->firstname;
+            $this->birthdate = $infoListAdmin[0]->birthdate;
+            $this->mail = $infoListAdmin[0]->mail;
+            $this->phone = $infoListAdmin[0]->phone;
+            return $infoListAdmin;
+        }
+    }
+    
     public function updateProfile(){
         $query = 'UPDATE `jcp_users` SET `lastname` = :lastname, `firstname` = :firstname, `birthdate` = :birthdate, `mail` = :mail, `phone` = :phone, `username` = :username WHERE `id` = :id';
         $update = $this->db->prepare($query);
@@ -97,6 +114,20 @@ class Users extends Database{
         $update->bindValue(':mail', $this->mail, PDO::PARAM_STR);
         $update->bindValue(':phone', $this->phone, PDO::PARAM_STR);
         $update->bindValue(':username', $this->username, PDO::PARAM_STR);
+        $update->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if($update->execute()){
+            return true;
+        }
+    }
+    
+    public function updateProfileAdminSide(){
+        $query = 'UPDATE `jcp_users` SET `lastname` = :lastname, `firstname` = :firstname, `birthdate` = :birthdate, `mail` = :mail, `phone` = :phone WHERE `id` = :id';
+        $update = $this->db->prepare($query);
+        $update->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
+        $update->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
+        $update->bindValue(':birthdate', $this->birthdate, PDO::PARAM_STR);
+        $update->bindValue(':mail', $this->mail, PDO::PARAM_STR);
+        $update->bindValue(':phone', $this->phone, PDO::PARAM_STR);
         $update->bindValue(':id', $this->id, PDO::PARAM_INT);
         if($update->execute()){
             return true;

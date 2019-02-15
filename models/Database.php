@@ -8,7 +8,7 @@
 
 /**
  * Description of Database
- *
+ * Utilisée pour la connexion à la base de données grâce à PDO
  * @author majorduky
  */
 class Database{ 

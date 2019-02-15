@@ -31,9 +31,6 @@ require '../../controllers/admin_side/accueilAdminCtrl.php';
             if(isset($_SESSION['username'])){
                 ?>
                     <li class="nav-item">
-                        <a class="nav-link" href="../profil.php">Votre profil</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" href="../../index.php?disconnect">Se déconnecter</a>
                     </li>
                 <?php

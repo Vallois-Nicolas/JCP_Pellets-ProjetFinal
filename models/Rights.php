@@ -37,4 +37,14 @@ class Rights extends Database{
             return true;
         }
     }
+    
+    public function updateRightsAdminSide(){
+        $query = 'UPDATE `jcp_user_types` SET `rights` = :rights WHERE `id_jcp_users` = :id_jcp_users';
+        $update = $this->db->prepare($query);
+        $update->bindValue(':rights', $this->rights, PDO::PARAM_STR);
+        $update->bindValue(':id_jcp_users', $this->id_jcp_users, PDO::PARAM_INT);
+        if($update->execute()){
+            return true;
+        }
+    }
 }
