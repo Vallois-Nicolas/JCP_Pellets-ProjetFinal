@@ -15,6 +15,6 @@ class Database{
     protected $db;
     
     public function __construct() {
-        $this->db = new PDO('mysql:dbname=dbname;host=localhost', 'username', 'mdp', [PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);
+        $this->db = new PDO('mysql:dbname=jcp;host=localhost', 'MajorDuky', 'Vlcdg@m3roedf', [PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION]);
     }
 }

@@ -8,8 +8,8 @@ if(isset($_POST['username']) && isset($_POST['password'])){
     $user = new Users();
     $username = htmlspecialchars($_POST['username']);
     $user->username = $username;
-    $connectUser = $user->connectUser();
-    if(COUNT($connectUser) > 0){
+    $selectByUsername = $user->selectByUsername();
+    if(COUNT($selectByUsername) > 0){
         
         $passwordUser = $_POST['password'];
         if(!password_verify($passwordUser, $user->password)){
@@ -17,7 +17,7 @@ if(isset($_POST['username']) && isset($_POST['password'])){
         }else{
             $_SESSION['id'] = $user->id;
             $_SESSION['username'] = $username;
-            $_SESSION['rights'] = $connectUser[0]->rights;
+            $_SESSION['rights'] = $selectByUsername[0]->rights;
             header('Location: ../index.php');
         }
     }else{      

@@ -60,19 +60,19 @@ class Users extends Database{
         }
     }
     
-    public function connectUser(){
+    public function selectByUsername(){
         $query = 'SELECT `jcp_users`.`id`, `jcp_user_types`.`rights`, `jcp_user_types`.`id_jcp_users`, `jcp_users`.`password` FROM `jcp_users` INNER JOIN `jcp_user_types` ON `jcp_users`.`id` = `jcp_user_types`.`id_jcp_users` WHERE `jcp_users`.`username` = :username';
-        $connect = $this->db->prepare($query);
-        $connect->bindValue(':username', $this->username, PDO::PARAM_STR);
-        if($connect->execute()){
-            $connectResult = $connect->fetchAll(PDO::FETCH_OBJ);
-            if(COUNT($connectResult) > 0){
-                $this->password = $connectResult[0]->password;
-                $this->id = $connectResult[0]->id;
+        $select = $this->db->prepare($query);
+        $select->bindValue(':username', $this->username, PDO::PARAM_STR);
+        if($select->execute()){
+            $selectResult = $select->fetchAll(PDO::FETCH_OBJ);
+            if(COUNT($selectResult) > 0){
+                $this->password = $selectResult[0]->password;
+                $this->id = $selectResult[0]->id;
                 sleep(1);
-                return $connectResult;
+                return $selectResult;
             }else{
-                return $connectResult;
+                return $selectResult;
             }
         }
     }
