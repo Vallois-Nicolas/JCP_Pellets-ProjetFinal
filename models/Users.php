@@ -23,8 +23,12 @@ class Users extends Database{
     
     public function __construct() {
         parent::__construct();
-    }
+    }    
     
+    /**
+     * Ajout utilisateur
+     * @return boolean
+     */
     public function addUser(){
         $query = 'INSERT INTO `jcp_users`(lastname, firstname, birthdate, phone, mail, username, password) VALUES (:lastname, :firstname, :birthdate, :phone, :mail, :username, :password)';
         $addUser = $this->db->prepare($query);
@@ -40,6 +44,10 @@ class Users extends Database{
         }
     }
     
+    /**
+     * 
+     * @return type
+     */
     public function filterByUsername(){
         $query = 'SELECT `id`, `username` FROM `jcp_users` WHERE `username` = :username';
         $filter = $this->db->prepare($query);
@@ -50,6 +58,10 @@ class Users extends Database{
         }
     }
     
+    /**
+     * 
+     * @return type
+     */
     public function filterByMail(){
         $query = 'SELECT `id`, `mail` FROM `jcp_users` WHERE `mail` = :mail';
         $filter = $this->db->prepare($query);
@@ -60,6 +72,10 @@ class Users extends Database{
         }
     }
     
+    /**
+     * 
+     * @return type
+     */
     public function selectByUsername(){
         $query = 'SELECT `jcp_users`.`id`, `jcp_user_types`.`rights`, `jcp_user_types`.`id_jcp_users`, `jcp_users`.`password` FROM `jcp_users` INNER JOIN `jcp_user_types` ON `jcp_users`.`id` = `jcp_user_types`.`id_jcp_users` WHERE `jcp_users`.`username` = :username';
         $select = $this->db->prepare($query);
@@ -77,6 +93,10 @@ class Users extends Database{
         }
     }
     
+    /**
+     * 
+     * @return boolean
+     */
     public function infoUser(){
         $query = 'SELECT * FROM `jcp_users` WHERE `id` = :id';
         $info = $this->db->prepare($query);
@@ -93,6 +113,10 @@ class Users extends Database{
         }
     }
     
+    /**
+     * 
+     * @return type
+     */
     public function infoUserAdminSide(){
         $query = 'SELECT `jcp_users`.`id`, `jcp_users`.`lastname`, `jcp_users`.`firstname`, `jcp_users`.`birthdate`, `jcp_users`.`phone`, `jcp_users`.`mail`, `jcp_users`.`username`, `jcp_user_types`.`rights` FROM `jcp_users` INNER JOIN `jcp_user_types` ON `jcp_users`.`id` = `jcp_user_types`.`id_jcp_users` WHERE `jcp_users`.`id` = :id';
         $infoAdmin = $this->db->prepare($query);
@@ -109,6 +133,10 @@ class Users extends Database{
         }
     }
     
+    /**
+     * 
+     * @return boolean
+     */
     public function updateProfile(){
         $query = 'UPDATE `jcp_users` SET `lastname` = :lastname, `firstname` = :firstname, `birthdate` = :birthdate, `mail` = :mail, `phone` = :phone, `username` = :username WHERE `id` = :id';
         $update = $this->db->prepare($query);
@@ -124,6 +152,10 @@ class Users extends Database{
         }
     }
     
+    /**
+     * 
+     * @return boolean
+     */
     public function updateProfileAdminSide(){
         $query = 'UPDATE `jcp_users` SET `lastname` = :lastname, `firstname` = :firstname, `birthdate` = :birthdate, `mail` = :mail, `phone` = :phone WHERE `id` = :id';
         $update = $this->db->prepare($query);
@@ -138,6 +170,10 @@ class Users extends Database{
         }
     }
     
+    /**
+     * 
+     * @return boolean
+     */
     public function deleteUser(){
         $query = 'DELETE FROM `jcp_users` WHERE `id` = :id';
         $delete = $this->db->prepare($query);
@@ -147,6 +183,10 @@ class Users extends Database{
         }
     }
     
+    /**
+     * 
+     * @return type
+     */
     public function listUser(){
         $query = 'SELECT `jcp_users`.`id`, `jcp_users`.`lastname`, `jcp_users`.`firstname`, `jcp_users`.`birthdate`, `jcp_users`.`phone`, `jcp_users`.`mail`, `jcp_users`.`username`, `jcp_user_types`.`rights` FROM `jcp_users` INNER JOIN `jcp_user_types` ON `jcp_users`.`id` = `jcp_user_types`.`id_jcp_users`';
         $list = $this->db->query($query);

@@ -20,6 +20,10 @@ class Rights extends Database{
         parent::__construct();
     }
     
+    /**
+     * 
+     * @return boolean
+     */
     public function addRights(){
         $query = 'INSERT INTO `jcp_user_types`(id_jcp_users) VALUES (:id_jcp_users)';
         $addRights = $this->db->prepare($query);
@@ -29,6 +33,10 @@ class Rights extends Database{
         }
     }
     
+    /**
+     * 
+     * @return boolean
+     */
     public function deleteRights(){
         $query = 'DELETE FROM `jcp_user_types` WHERE `id_jcp_users` = :id';
         $deleteRights = $this->db->prepare($query);

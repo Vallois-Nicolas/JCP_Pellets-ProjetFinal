@@ -54,7 +54,7 @@ require '../controllers/connexionCtrl.php';
                         <label for="username">Votre nom d'utilisateur : </label>
                     </div>
                     <div class="offset-lg-1 col-lg-4">
-                        <input id="username" type="text" name="username" value="<?php if(isset($errors)){echo $_POST['username'];} ?>" data-toggle="popover" data-trigger="focus" title="Votre nom d'utilisateur" data-content="Doit correspondre à celui que vous avez renseigné lors de votre inscription." required>
+                        <input id="username" type="text" name="username" value="<?php if(isset($errors) && isset($_POST['username'])){echo $_POST['username'];}else{echo '';} ?>" data-toggle="popover" data-trigger="focus" title="Votre nom d'utilisateur" data-content="Doit correspondre à celui que vous avez renseigné lors de votre inscription." required>
                     </div>
                 </div>
                 <div class="row connexionDiv">

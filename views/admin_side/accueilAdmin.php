@@ -6,7 +6,7 @@ require '../../controllers/admin_side/accueilAdminCtrl.php';
 <html>
     <head>
         <meta charset='utf-8'>
-        <title>Produits - JCP Pellets</title>
+        <title>Accueil Admin - JCP Pellets</title>
         <link rel="shortcut icon" href="../assets/img/logoJCP.png">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="../../assets/css/style.css">

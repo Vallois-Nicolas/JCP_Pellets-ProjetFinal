@@ -1,20 +1,28 @@
 <?php
-
+// Si la variable de session rights n'est pas présente ou si elle est présente mais sa valeur est différente de 'admin'
 if(!isset($_SESSION['rights']) || $_SESSION['rights'] != 'admin'){
+    // je redirige sur la page index
     header('Location: ../../index.php');
 }
 
+// J'ai besoin dans ce controller des models me permettant de modifier edt d'affichier les informations d'un utilisateur côté admin
 require '../../models/Database.php';
 require '../../models/Users.php';
 require '../../models/Rights.php';
 
+// J'instancie ma classe Users dans une variable $user, celle-ci devient donc un objet
 $user = new Users();
+// J'instancie ma class Rights dans une variable $rights, celle-ci devient donc un objet
 $rights = new Rights();
+// Je stocke dans une nouvelle variable le résultat de l'application de ma méthode listUser sur mon objet $user
 $listUsers = $user->listUser();
 
+// Je crée un tableau $errors servant à renvoyer une erreur si l'administrateur commet une erreur lors de la modification
 $errors = [];
 
+// Si un paramètre modifyId est présent dans le tableau GET,
 if(isset($_GET['modifyId'])){
+    // j'hydrate l'attribut id de mon objet $user avec la valeur du paramètre modifyId protégée des injections de script avec la méthode php htmlspecialchars
     $user->id = htmlspecialchars($_GET['modifyId']);
     $infoUser = $user->infoUserAdminSide();
     
