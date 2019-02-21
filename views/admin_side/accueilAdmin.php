@@ -1,5 +1,7 @@
 <?php
+// Je démarre la session afin de pouvoir utiliser les éventuelles variables de session créées lors de la connexion
 session_start();
+// J'ai besoin ici de mon controller correspondant à la page d'accueil côté administrateur
 require '../../controllers/admin_side/accueilAdminCtrl.php';
 ?>
 <!DOCTYPE html>

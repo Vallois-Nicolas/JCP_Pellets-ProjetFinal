@@ -5,7 +5,9 @@
     <p>N'attendez plus ! Découvrez dès maintenant nos produits en cliquant sur 'Produits' dans la barre située en haut de votre écran, ou appuyez directement sur le bouton ci-dessous !</p>
     <a href="views/products.php" class="btn btn-primary buttonProducts btn-lg" tabindex="-1" role="button" aria-disabled="true">Tous nos produits</a>
     <?php
+    // Si le tableau $success a été créé dans le controller et qu'il contient des valeurs
     if(isset($success) && COUNT($success) > 0){
+        // Pour chaque message de succès j'affiche un toast bootstrap (nouveauté 4.2) contenant le texte du message en question
         foreach ($success as $isOk){
             ?>
             <div class="toast toastRegister" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">

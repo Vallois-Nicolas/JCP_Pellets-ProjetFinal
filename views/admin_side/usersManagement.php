@@ -1,5 +1,7 @@
 <?php
+// Je démarre la session afin de pouvoir utiliser les éventuelles variables de session créées lors de la connexion
 session_start();
+// J'ai besoin ici de mon controller correspondant à la page de gestion des utilisateurs côté administrateur
 require '../../controllers/admin_side/usersManagementCtrl.php';
 ?>
 <!DOCTYPE html>
@@ -49,6 +51,7 @@ require '../../controllers/admin_side/usersManagementCtrl.php';
             </div>
         </nav>
         <?php
+        // Si la valeur modifyId n'est pas présente dans le tableau GET, c'est qu'aucune modification n'est demandée et donc qu'il faut afficher la liste complète des utilisateurs
         if(!isset($_GET['modifyId'])){
         ?>
             <div class="container-fluid">
@@ -83,6 +86,7 @@ require '../../controllers/admin_side/usersManagementCtrl.php';
                                     <td><?= $user->mail; ?></td>
                                     <td><?= $user->username; ?></td>
                                     <td><?= $user->rights; ?></td>
+                                    <!-- Ces liens permettent le renvoie sur la même page en passant en paramètre d'url l'id de l'utilisateur sur lequel une action est demandée -->
                                     <td><a href="usersManagement.php?modifyId=<?= $user->id; ?>">Modifier</a></td>
                                     <td><a href="usersManagement.php?deleteId=<?= $user->id; ?>">Supprimer</a></td>
                                 </tr>
@@ -95,6 +99,7 @@ require '../../controllers/admin_side/usersManagementCtrl.php';
                 </div>
             </div>
         <?php
+        // Si la valeur modifyId est présente dans le tableau GET alors une modification est demandée par l'administrateur et il faut donc afficher le formulaire de modification au lieu de la liste de tous les utilisateurs
         }else{
         ?>
             <div class="container generalDisplay shadow-lg p-3bg-white mt-3 mb-3 rounded">
@@ -161,7 +166,9 @@ require '../../controllers/admin_side/usersManagementCtrl.php';
                     <a href="usersManagement.php">Retour</a>
                 </center>
                 <?php
+                // Si une valeur est présente dans le tableau $errors créé dans le controller
                 if(COUNT($errors) > 0){
+                    // Pour chaque valeur présente dans ce tableau, j'affiche un toast bootstrap (nouveauté 4.2) contenant le texte du message d'erreur
                     foreach ($errors as $error){
                         ?>
                         <div class="toast toastModifyAdmin" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">

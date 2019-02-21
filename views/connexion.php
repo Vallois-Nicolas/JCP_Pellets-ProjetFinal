@@ -1,5 +1,7 @@
 <?php
+// Je démarre la session afin de pouvoir utiliser les éventuelles variables de session créées lors de la connexion
 session_start();
+// J'ai besoin ici de mon controller correspondant à la page de connexion
 require '../controllers/connexionCtrl.php';
 ?>
 <!DOCTYPE html>
@@ -77,7 +79,9 @@ require '../controllers/connexionCtrl.php';
                 </div>
             </form>
             <?php
+            // Si une valeur est présente dans le tableau $errors créé dans le controller
             if(COUNT($errors) > 0){
+                // Pour chaque valeur présente dans ce tableau, j'affiche un toast bootstrap (nouveauté 4.2) contenant le texte du message d'erreur
                 foreach ($errors as $error){
                     ?>
             <div class="toast toastConnexion" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
