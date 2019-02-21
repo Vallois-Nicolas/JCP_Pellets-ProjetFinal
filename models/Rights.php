@@ -1,14 +1,8 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of Rights
- *
+ * Classe permettant la manipulation des données de la table jcp_user_types
  * @author majorduky
  */
 class Rights extends Database{
@@ -21,7 +15,9 @@ class Rights extends Database{
     }
     
     /**
-     * 
+     * addRights permet l'insertion de droits pour un utilisateur sur une clé étrangère reliant cette table à la table jcp_users
+     * Les droits utilisateurs sont définis par défaut sur 'user', donc inutile dans la requète de renseigner une valeur pour la colonne rights
+     * Cette méthode doit être absolument appelée APRÈS l'insertion d'un utilisateur dans la table users.
      * @return boolean
      */
     public function addRights(){
@@ -34,7 +30,8 @@ class Rights extends Database{
     }
     
     /**
-     * 
+     * deleteRights permet la suppression des droits d'un utilisateur sur la valeur de la clé étrangère reliant cette table à la table jcp_users
+     * Cette méthode doit absolument être appelée AVANT la suppression d'un utilisateur dans la table users puisque la suppression d'une valeur de la table mère nécessite la suppression de toutes les tables où apparaît sa clé étrangère
      * @return boolean
      */
     public function deleteRights(){
@@ -46,6 +43,10 @@ class Rights extends Database{
         }
     }
     
+    /**
+     * updateRightsAdminSide permet la modification des droits d'un utilisateur depuis la partie administrateur du site sur la valeur de la clé étrangère reliant cette table à la table jcp_users
+     * @return boolean
+     */
     public function updateRightsAdminSide(){
         $query = 'UPDATE `jcp_user_types` SET `rights` = :rights WHERE `id_jcp_users` = :id_jcp_users';
         $update = $this->db->prepare($query);
