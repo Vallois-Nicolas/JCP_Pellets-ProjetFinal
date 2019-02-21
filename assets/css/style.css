@@ -48,6 +48,10 @@ body{
     text-align: right;
     margin-top: 2%;
 }
+.addProductDiv{
+    text-align: right;
+    margin-top: 2%;
+}
 .modifyDiv{
     text-align: right;
     margin-top: 1%;
@@ -57,6 +61,9 @@ body{
 }
 .registerForm{
     margin-top: 5%;
+}
+.addProductForm{
+    margin-top: 10%;
 }
 .dumbConnexion{
     margin-top: 3%;

@@ -1,8 +1,8 @@
 <?php
 // Je démarre la session afin de pouvoir utiliser les éventuelles variables de session créées lors de la connexion
 session_start();
-// J'ai besoin ici de mon controller correspondant à la page de gestion des produits côté administrateur
-require '../../controllers/admin_side/productsManagementCtrl.php';
+// J'ai besoin ici de mon controller correspondant à la page d'ajout des produits côté administrateur
+require '../../controllers/admin_side/addProductCtrl.php';
 ?>
 <!DOCTYPE html>
 <html>
@@ -54,10 +54,50 @@ require '../../controllers/admin_side/productsManagementCtrl.php';
             </div>
         </nav>
         <div class="container generalDisplay shadow-lg p-3bg-white mt-3 mb-3 rounded">
-            <p>Ceci est la page produits</p>
+            <h1 class="title">Ajout de produit</h1>
+            <form action="connexion.php" method="post" class="addProductForm">
+                <div class="row addProductDiv">
+                    <div class="offset-lg-1 col-lg-4">
+                        <label for="name">Nom de l'objet : </label>
+                    </div>
+                    <div class="offset-lg-1 col-lg-4">
+                        <input id="name" type="text" name="name" data-toggle="popover" data-trigger="focus" title="Choisir un nom pour le produit" data-content="Doit être clair et compréhensible" required>
+                    </div>
+                </div>
+                <div class="row addProductDiv">
+                    <div class="offset-lg-1 col-lg-4">
+                        <label for="price">Prix : </label>
+                    </div>
+                    <div class="offset-lg-1 col-lg-4">
+                        <input id="price" type="text" name="price" data-toggle="popover" data-trigger="focus" title="Choisir un prix" data-content="Doit être un chiffre entier ou décimal." required>
+                    </div>
+                </div>
+                <div class="row addProductDiv">
+                    <div class="offset-lg-1 col-lg-4">
+                        <label for="description">Description : </label>
+                    </div>
+                    <div class="offset-lg-1 col-lg-4">
+                        <textarea id="description" name="description" data-toggle="popover" data-trigger="focus" title="Entrer une description" data-content="Doit faire au maximum 255 caractères." required></textarea>
+                    </div>
+                </div>
+                <div class="row addProductDiv">
+                    <div class="offset-lg-1 col-lg-4">
+                        <label for="image">Image (png): </label>
+                    </div>
+                    <div class="offset-lg-1 col-lg-4">
+                        <input id="image" type="file" name="image" data-toggle="popover" data-trigger="focus" title="Choisir une image" data-content="Doit être au format png." required>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="offset-lg-5 col-lg-3">
+                        <button type="submit" class="btn btn-primary buttonSubmit2">Ajout produit</button>
+                    </div>
+                </div>
+            </form>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+        <script src="../../assets/js/script.js"></script>
     </body>
 </html>

@@ -25,6 +25,9 @@ require '../../controllers/admin_side/usersManagementCtrl.php';
                         <a class="nav-link" href="usersManagement.php">Gestion utilisateurs</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="addProduct.php">Ajouter un produit</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="productsManagement.php">Gestion produits</a>
                     </li>
                 </ul>
