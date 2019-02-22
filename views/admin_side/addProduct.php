@@ -8,7 +8,7 @@ require '../../controllers/admin_side/addProductCtrl.php';
 <html>
     <head>
         <meta charset='utf-8'>
-        <title>Gestion produits - JCP Pellets</title>
+        <title>Ajout produit - JCP Pellets</title>
         <link rel="shortcut icon" href="../assets/img/logoJCP.png">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="../../assets/css/style.css">
@@ -55,7 +55,7 @@ require '../../controllers/admin_side/addProductCtrl.php';
         </nav>
         <div class="container generalDisplay shadow-lg p-3bg-white mt-3 mb-3 rounded">
             <h1 class="title">Ajout de produit</h1>
-            <form action="connexion.php" method="post" class="addProductForm">
+            <form action="addProduct.php" enctype="multipart/form-data" method="post" class="addProductForm">
                 <div class="row addProductDiv">
                     <div class="offset-lg-1 col-lg-4">
                         <label for="name">Nom de l'objet : </label>
@@ -77,15 +77,15 @@ require '../../controllers/admin_side/addProductCtrl.php';
                         <label for="description">Description : </label>
                     </div>
                     <div class="offset-lg-1 col-lg-4">
-                        <textarea id="description" name="description" data-toggle="popover" data-trigger="focus" title="Entrer une description" data-content="Doit faire au maximum 255 caractères." required></textarea>
+                        <textarea id="description" name="description" data-toggle="popover" data-trigger="focus" title="Entrer une description" data-content="Doit faire au maximum 255 caractères." maxlength="255" required></textarea>
                     </div>
                 </div>
                 <div class="row addProductDiv">
                     <div class="offset-lg-1 col-lg-4">
-                        <label for="image">Image (png): </label>
+                        <label for="image">Image (png ou jpeg): </label>
                     </div>
                     <div class="offset-lg-1 col-lg-4">
-                        <input id="image" type="file" name="image" data-toggle="popover" data-trigger="focus" title="Choisir une image" data-content="Doit être au format png." required>
+                        <input id="image" type="file" name="image" data-toggle="popover" data-trigger="focus" title="Choisir une image" data-content="" required>
                     </div>
                 </div>
                 <div class="row">
