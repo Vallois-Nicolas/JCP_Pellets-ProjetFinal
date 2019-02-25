@@ -1,5 +1,7 @@
 <?php
+// Je démarre la session afin de pouvoir utiliser les éventuelles variables de session créées lors de la connexion
 session_start();
+// J'ai besoin ici de mon controller correspondant à la page d'accueil
 require 'controllers/accueilCtrl.php'
 ?>
 <!DOCTYPE html>
@@ -38,6 +40,7 @@ require 'controllers/accueilCtrl.php'
         </ul>
         <ul class="navbar-nav">
             <?php
+            // Si la variable de session 'username' est présente, c'est que l'utilisateur est connecté et donc il est pertinent de lui afficher les liens vers la page de profil et de déconnexion
             if(isset($_SESSION['username'])){
                 ?>
                 <li class="nav-item">
@@ -47,6 +50,7 @@ require 'controllers/accueilCtrl.php'
                     <a class="nav-link" href="index.php?disconnect">Se déconnecter</a>
                 </li>
                 <?php
+            // Sinon, l'utilisateur n'est pas connecté, par conséquent je lui affiche les liens vers les pages de connexion et d'inscription.
             }else{
                 ?>
                 <li class="nav-item">
@@ -62,6 +66,7 @@ require 'controllers/accueilCtrl.php'
     </div>
 </nav>
 <?php
+// Ici j'ai crée une vue spéciale pour l'accueil, je l'inclus donc donc mon index grâce à un include.
 include 'views/accueil.php';
 ?>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
