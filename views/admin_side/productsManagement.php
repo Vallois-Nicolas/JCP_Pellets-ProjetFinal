@@ -53,8 +53,36 @@ require '../../controllers/admin_side/productsManagementCtrl.php';
                 </ul>
             </div>
         </nav>
-        <div class="container generalDisplay shadow-lg p-3bg-white mt-3 mb-3 rounded">
-            <p>Ceci est la page produits</p>
+        <div class="container-fluid">
+            <div class="generalDisplay productsList shadow-lg p-3bg-white mt-3 mb-3 rounded">
+                <?php
+                if(isset($listProduct) && COUNT($listProduct) > 0){
+                    foreach($listProduct as $products){
+                        ?>
+                        <div class="row productsRender">
+                            <div class="col-4 mt-2">
+                                <center>
+                                    <img src="<?= 'data:' . $products->image_type . ';base64, ' . base64_encode($products->image) ?>" class="imgCardProducts"/>
+                                </center>
+                            </div>
+                            <div class="col-2 mt-2 pt-5 bordersProduct">
+                                <p>Nom de l'article : <?= $products->name; ?></p>
+                                <p>Prix unitaire : <?= $products->price . ' €'; ?></p>
+                            </div>
+                            <div class="col-5 mt-2 pt-5 bordersProduct">
+                                <p class="cardDescription">Description de l'article : </p>
+                                <p class="cardDescription"><?= $products->description; ?></p>
+                            </div>
+                            <div class="col-1 mt-2 pt-5">
+                                <a href="productsManagement.php?modifyProduct=<?= $products->id; ?>">Modifier</a>
+                                <a href="productsManagement.php?deleteProduct=<?= $products->id; ?>">Supprimer</a>
+                            </div>
+                        </div>
+                        <?php
+                    }
+                }
+                ?>
+            </div>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

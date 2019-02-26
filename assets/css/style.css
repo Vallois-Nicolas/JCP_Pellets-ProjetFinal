@@ -154,6 +154,11 @@ body{
 .logoToast{
     width: 7%;
 }
+.toastAddProductAdmin{
+    opacity: 1;
+    position: relative;
+    margin-top: -50%;
+}
 
 /* CSS page profil */
 
@@ -210,6 +215,26 @@ tr:nth-child(odd){
     background-color: rgb(255, 253, 163);
 }
 
+/* CSS page product management */
+
+.imgCardProducts{
+    width: 60%;
+}
+.productsRender{
+    border-bottom: 1px solid yellow;
+}
+.cardDescription{
+    width: 80%;
+    overflow-x: scroll;
+}
+.bordersProduct{
+    border-right: 1px solid yellow;
+    height: 60%;
+}
+.productsList{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 /* Media queries */
 
 @media all and (max-height: 736px){

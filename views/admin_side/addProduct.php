@@ -69,7 +69,7 @@ require '../../controllers/admin_side/addProductCtrl.php';
                         <label for="price">Prix : </label>
                     </div>
                     <div class="offset-lg-1 col-lg-4">
-                        <input id="price" type="text" name="price" data-toggle="popover" data-trigger="focus" title="Choisir un prix" data-content="Doit être un chiffre entier ou décimal." required>
+                        <input id="price" type="text" name="price" data-toggle="popover" data-trigger="focus" title="Choisir un prix" data-content="Doit être un chiffre entier ou décimal. Merci de ne pas ajouter le symbole €, l'ajout se fera automatiquement." required>
                     </div>
                 </div>
                 <div class="row addProductDiv">
@@ -85,7 +85,7 @@ require '../../controllers/admin_side/addProductCtrl.php';
                         <label for="image">Image (png ou jpeg): </label>
                     </div>
                     <div class="offset-lg-1 col-lg-4">
-                        <input id="image" type="file" name="image" data-toggle="popover" data-trigger="focus" title="Choisir une image" data-content="" required>
+                        <input id="image" type="file" name="image" data-toggle="popover" data-trigger="focus" title="Choisir une image" data-content="Ne doit pas dépasser 750ko" required>
                     </div>
                 </div>
                 <div class="row">
@@ -94,6 +94,25 @@ require '../../controllers/admin_side/addProductCtrl.php';
                     </div>
                 </div>
             </form>
+            <?php
+            // Si une valeur est présente dans le tableau $errors créé dans le controller
+            if(isset($errors) && COUNT($errors) > 0){
+                // Pour chaque valeur présente dans ce tableau, j'affiche un toast bootstrap (nouveauté 4.2) contenant le texte du message d'erreur
+                foreach ($errors as $error){
+                    ?>
+                    <div class="toast toastAddProductAdmin" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+                        <div class="toast-header fail">
+                            <img src="../../assets/img/logoJCP.png" class="logoToast rounded mr-2" alt="logo JCP">
+                            <strong class="mr-auto">Erreur</strong>
+                        </div>
+                        <div class="toast-body fail">
+                            <?= $error; ?>
+                        </div>
+                    </div>
+                    <?php
+                }
+            }
+            ?>
         </div>
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>

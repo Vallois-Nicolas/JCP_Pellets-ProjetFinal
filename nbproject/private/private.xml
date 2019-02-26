@@ -2,6 +2,26 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/majorduky/LaManu/JCPPellets/views/register.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/models/Users.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/views/profil.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/models/Database.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/index.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/views/accueil.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/assets/css/style.css</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/controllers/accueilCtrl.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/views/connexion.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/controllers/registerCtrl.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/views/admin_side/usersManagement.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/views/cart.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/views/admin_side/addProduct.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/controllers/admin_side/productsManagementCtrl.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/models/Products.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/views/admin_side/productsManagement.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/controllers/admin_side/usersManagementCtrl.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/views/products.php</file>
+            <file>file:/home/majorduky/LaManu/JCPPellets/controllers/admin_side/addProductCtrl.php</file>
+        </group>
     </open-files>
 </project-private>

@@ -30,4 +30,18 @@ class Products extends Database{
             return true;
         }
     }
+    public function listProducts(){
+        $query = 'SELECT * FROM `jcp_products`';
+        $listProducts = $this->db->query($query);
+        $list = $listProducts->fetchAll(PDO::FETCH_OBJ);
+        if(COUNT($list)){
+            $this->id = $list[0]->id;
+            $this->price = $list[0]->price;
+            $this->name = $list[0]->name;
+            $this->image = $list[0]->image;
+            $this->image_type = $list[0]->image_type;
+            $this->description = $list[0]->description;
+            return $list;
+        }
+    }
 }
