@@ -159,7 +159,12 @@ body{
     position: relative;
     margin-top: -50%;
 }
-
+.toastProductAdmin{
+    opacity: 1;
+    position: relative;
+    margin-top: -40%;
+    margin-left: 10%;
+}
 /* CSS page profil */
 
 .infoDisplay{
@@ -218,7 +223,8 @@ tr:nth-child(odd){
 /* CSS page product management */
 
 .imgCardProducts{
-    width: 60%;
+    width: 40%;
+    padding-bottom: 2%;
 }
 .productsRender{
     border-bottom: 1px solid yellow;
@@ -234,6 +240,9 @@ tr:nth-child(odd){
 .productsList{
     overflow-y: scroll;
     overflow-x: hidden;
+}
+#returnButtonProducts{
+    margin-top: 50%;
 }
 /* Media queries */
 

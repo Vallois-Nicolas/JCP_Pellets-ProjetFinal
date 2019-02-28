@@ -38,5 +38,5 @@ $(function () {
         $('#disagreeDeleteAccount').hide();
         $('#agreementSentence').hide();
         $('#showModifForm').show();
-    })
+    });
 });

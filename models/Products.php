@@ -44,4 +44,37 @@ class Products extends Database{
             return $list;
         }
     }
+    
+    public function deleteProduct(){
+        $query = 'DELETE FROM `jcp_products` WHERE `id` = :id';
+        $delete = $this->db->prepare($query);
+        $delete->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if($delete->execute()){
+            return true;
+        }
+    }
+    
+    public function updateProduct(){
+        $query = 'UPDATE `jcp_products` SET `price` = :price, `name` = :name, `image` = :image, `image_type` = :image_type, `description` = :description WHERE `id` = :id';
+        $update = $this->db->prepare($query);
+        $update->bindValue(':id', $this->id, PDO::PARAM_INT);
+        $update->bindValue(':price', $this->price, PDO::PARAM_STR);
+        $update->bindValue(':name', $this->name, PDO::PARAM_STR);
+        $update->bindValue(':image', $this->image, PDO::PARAM_LOB);
+        $update->bindValue(':image_type', $this->image_type, PDO::PARAM_STR);
+        $update->bindValue(':description', $this->description, PDO::PARAM_STR);
+        if($update->execute()){
+            return true;
+        }
+    }
+    
+    public function infoProduct(){
+        $query = 'SELECT * FROM `jcp_products` WHERE `id` = :id';
+        $infoProduct = $this->db->prepare($query);
+        $infoProduct->bindValue(':id', $this->id, PDO::PARAM_INT);
+        if($infoProduct->execute()){
+            $info = $infoProduct->fetchAll(PDO::FETCH_OBJ);
+            return $info;
+        }
+    }
 }

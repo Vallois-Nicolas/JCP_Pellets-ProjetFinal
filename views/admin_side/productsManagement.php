@@ -56,29 +56,93 @@ require '../../controllers/admin_side/productsManagementCtrl.php';
         <div class="container-fluid">
             <div class="generalDisplay productsList shadow-lg p-3bg-white mt-3 mb-3 rounded">
                 <?php
-                if(isset($listProduct) && COUNT($listProduct) > 0){
-                    foreach($listProduct as $products){
+                if(isset($_GET['modifyProduct'])){
+                    foreach($infoProduct as $info){
                         ?>
-                        <div class="row productsRender">
-                            <div class="col-4 mt-2">
-                                <center>
-                                    <img src="<?= 'data:' . $products->image_type . ';base64, ' . base64_encode($products->image) ?>" class="imgCardProducts"/>
-                                </center>
+                <form action="productsManagement.php?modifyProduct=<?= $info->id; ?>" enctype="multipart/form-data" method="post" class="addProductForm">
+                            <div class="row addProductDiv">
+                                <div class="offset-lg-1 col-lg-4">
+                                    <label for="name">Nom de l'objet : </label>
+                                </div>
+                                <div class="offset-lg-1 col-lg-4">
+                                    <input id="name" type="text" name="name" value="<?= $info->name ?>" data-toggle="popover" data-trigger="focus" title="Choisir un nom pour le produit" data-content="Doit être clair et compréhensible" required>
+                                </div>
                             </div>
-                            <div class="col-2 mt-2 pt-5 bordersProduct">
-                                <p>Nom de l'article : <?= $products->name; ?></p>
-                                <p>Prix unitaire : <?= $products->price . ' €'; ?></p>
+                            <div class="row addProductDiv">
+                                <div class="offset-lg-1 col-lg-4">
+                                    <label for="price">Prix : </label>
+                                </div>
+                                <div class="offset-lg-1 col-lg-4">
+                                    <input id="price" type="text" name="price" value="<?= $info->price ?>" data-toggle="popover" data-trigger="focus" title="Choisir un prix" data-content="Doit être un chiffre entier ou décimal. Merci de ne pas ajouter le symbole €, l'ajout se fera automatiquement." required>
+                                </div>
                             </div>
-                            <div class="col-5 mt-2 pt-5 bordersProduct">
-                                <p class="cardDescription">Description de l'article : </p>
-                                <p class="cardDescription"><?= $products->description; ?></p>
+                            <div class="row addProductDiv">
+                                <div class="offset-lg-1 col-lg-4">
+                                    <label for="description">Description : </label>
+                                </div>
+                                <div class="offset-lg-1 col-lg-4">
+                                    <textarea id="description" name="description" data-toggle="popover" data-trigger="focus" title="Entrer une description" data-content="Doit faire au maximum 255 caractères." maxlength="255" required><?= $info->description ?></textarea>
+                                </div>
                             </div>
-                            <div class="col-1 mt-2 pt-5">
-                                <a href="productsManagement.php?modifyProduct=<?= $products->id; ?>">Modifier</a>
-                                <a href="productsManagement.php?deleteProduct=<?= $products->id; ?>">Supprimer</a>
+                            <div class="row addProductDiv">
+                                <div class="offset-lg-1 col-lg-4">
+                                    <label for="image">Image (png ou jpeg): </label>
+                                </div>
+                                <div class="offset-lg-1 col-lg-4">
+                                    <input id="image" type="file" name="image" data-toggle="popover" data-trigger="focus" title="Choisir une image" data-content="Ne doit pas dépasser 750ko" required>
+                                </div>
                             </div>
-                        </div>
+                            <div class="row">
+                                <div class="offset-lg-5 col-lg-3">
+                                    <button type="submit" class="btn btn-primary buttonSubmit2">Modifier</button>
+                                    <a href="productsManagement.php" class="btn btn-danger" id="returnButtonProducts">Retour</a>
+                                </div>
+                            </div>
+                        </form>
                         <?php
+                        // Si une valeur est présente dans le tableau $errors créé dans le controller
+                        if(isset($errors) && COUNT($errors) > 0){
+                            // Pour chaque valeur présente dans ce tableau, j'affiche un toast bootstrap (nouveauté 4.2) contenant le texte du message d'erreur
+                            foreach ($errors as $error){
+                                ?>
+                                <div class="toast toastProductAdmin" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="false">
+                                    <div class="toast-header fail">
+                                        <img src="../../assets/img/logoJCP.png" class="logoToast rounded mr-2" alt="logo JCP">
+                                        <strong class="mr-auto">Erreur</strong>
+                                    </div>
+                                    <div class="toast-body fail">
+                                        <?= $error; ?>
+                                    </div>
+                                </div>
+                                <?php
+                            }
+                        }
+                    }
+                }else{
+                    if(isset($listProduct) && COUNT($listProduct) > 0){
+                        foreach($listProduct as $products){
+                            ?>
+                            <div class="row productsRender">
+                                <div class="col-4 mt-2">
+                                    <center>
+                                        <img src="<?= 'data:' . $products->image_type . ';base64, ' . base64_encode($products->image) ?>" class="imgCardProducts"/>
+                                    </center>
+                                </div>
+                                <div class="col-2 mt-2 pt-5 bordersProduct">
+                                    <p>Nom de l'article : <?= $products->name; ?></p>
+                                    <p>Prix unitaire : <?= $products->price . ' €'; ?></p>
+                                </div>
+                                <div class="col-5 mt-2 pt-5 bordersProduct">
+                                    <p class="cardDescription">Description de l'article : </p>
+                                    <p class="cardDescription"><?= $products->description; ?></p>
+                                </div>
+                                <div class="col-1 mt-2 pt-5">
+                                    <a href="productsManagement.php?modifyProduct=<?= $products->id; ?>">Modifier</a>
+                                    <a href="productsManagement.php?deleteProduct=<?= $products->id; ?>">Supprimer</a>
+                                </div>
+                            </div>
+                            <?php
+                        }
                     }
                 }
                 ?>
