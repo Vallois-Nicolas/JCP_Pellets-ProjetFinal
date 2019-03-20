@@ -12,6 +12,7 @@ require '../controllers/registerCtrl.php';
         <link rel="shortcut icon" href="../assets/img/logoJCP.png">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
         <link rel="stylesheet" href="../assets/css/style.css">
+        <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow">
@@ -108,6 +109,11 @@ require '../controllers/registerCtrl.php';
                         <input id="verifyPassword" type="password" name="verifyPassword" data-toggle="popover" data-trigger="focus" title="Confirmation du mot de passe" data-content="Veuillez renseigner le champ avec le même contenu que le champ ci-dessus."required>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="offset-lg-6 col-lg-4 spaceTop">
+                        <div class="g-recaptcha" data-sitekey="6Lfw8ZgUAAAAADO6ui4wZikEY6NFoytiDlmS538Q"></div>
+                    </div>
+                </div>  
                 <div class="row">
                     <div class="offset-lg-5 col-lg-5">
                         <button type="submit" class="btn btn-primary buttonSubmit">S'inscrire</button>

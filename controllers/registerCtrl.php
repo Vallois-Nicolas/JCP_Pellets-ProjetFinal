@@ -21,6 +21,15 @@ if(COUNT($_POST) > 0){
     $mail = htmlspecialchars($_POST['mail']);
     $username = htmlspecialchars($_POST['username']);
     
+    // Pour le captcha
+    // La clé privée
+    $secret = "";
+    // La réponse de google 
+    $response = $_POST['g-recaptcha-response'];
+    // On récupère l'IP de l'utilisateur
+    $remoteip = $_SERVER['REMOTE_ADDR'];
+    $api_url = "https://www.google.com/recaptcha/api/siteverify?secret=" . $secret . "&response=" . $response . "&remoteip=" . $remoteip ;
+    $decode = json_decode(file_get_contents($api_url), true);
     // Si le mot de passe renseigné ne correspond pas à la forme attendue,
     if(!preg_match_all('#^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[-+!*$@%_])([-+!*$@%_\w]{8,15})$#', $_POST['password'])){
         // je renvoie une erreur dans mon tableau $errors signalant à l'utilisateur que son mot de passe ne correspond pas au format
@@ -54,6 +63,8 @@ if(COUNT($_POST) > 0){
         }else if(!password_verify($passwordVerify, $password)){
             // je renvoie une erreur à l'utilisateur lui signalant que les 2 mots de passe qu'il a renseigné doivent être identiques
             $errors[] = 'Veuillez renseigner les deux champs mot de passe à l\'identique';
+        }else if($decode['success'] == false){
+            $errors[] = 'Soit vous n\'avez pas renseigné le captcha soit vous êtes un robot,or j\'ai confiance en vous !';
         }else{
              // Si le processus de vérification a validé tous les tests, j'hydrate la majorité des attributs de mon objet $user afin d'inscrire l'utilsateur par la suite
             $user->lastname = $lastname;
