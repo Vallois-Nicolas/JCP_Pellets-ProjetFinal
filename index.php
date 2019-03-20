@@ -27,15 +27,8 @@ require 'controllers/accueilCtrl.php'
             <li class="nav-item">
                 <a class="nav-link" href="views/cart.php">Mon panier</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Produits
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="views/products.php">Tous les produits</a>
-                    <a class="dropdown-item" href="views/products.php?category=REMPLIR">Another action</a>
-                    <a class="dropdown-item" href="views/products.php?category=REMPLIR">Something else here</a>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="views/products.php">Nos produits</a>
             </li>
         </ul>
         <ul class="navbar-nav">

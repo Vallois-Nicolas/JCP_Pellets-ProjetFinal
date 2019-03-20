@@ -244,6 +244,30 @@ tr:nth-child(odd){
 #returnButtonProducts{
     margin-top: 50%;
 }
+
+/* CSS page products */
+
+.descriptionProduct{
+    word-wrap: break-word;  
+}
+.imgProducts{
+    width: 10rem;
+    height: 10rem;
+    margin: auto;
+}
+.imgProductsDetails{
+    width: 100%;
+}
+.spaceTop{
+    padding-top: 3%;
+}
+.price{
+    color: rgb(69, 79, 96);
+}
+.btnDetails{
+    background-image: linear-gradient(to bottom right, rgb(243, 191, 68), rgb(245, 237, 37));
+    color: black;
+}
 /* Media queries */
 
 @media all and (max-height: 736px){
